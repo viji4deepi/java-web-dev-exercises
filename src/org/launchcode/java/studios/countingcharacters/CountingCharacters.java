@@ -1,4 +1,9 @@
 package org.launchcode.java.studios.countingcharacters;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Collections;
 import java.util.Map;
@@ -9,7 +14,7 @@ public class CountingCharacters {
         HashMap<Character,Integer> charCountMap = new HashMap<>();
 
         // convert the string to character
-        char[] charactersInString = inputString.toCharArray();
+        char[] charactersInString = inputString.toUpperCase().toCharArray();
         for (var stringChar : charactersInString) {
             //  System.out.println(charString);
 
@@ -31,13 +36,16 @@ public class CountingCharacters {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // write your code here
         //   var myString = "This is a Star";
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a sentence :");
         String myString = input.nextLine();
-        myString = myString.replaceAll("[^a-zA-Z]", "");
+
+        myString = myString.replaceAll("[^a-zA-Z]", " ");
+      //  String filePath = new String(Files.readAllBytes(Paths.get(myString)));
+      //  characterCount(filePath);
         characterCount(myString);
 
 
